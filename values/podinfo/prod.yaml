@@ -1,7 +1,7 @@
 replicaCount: 3
 ui:
   color: "#51cf66"
-  message: "PROD via ArgoCD"
+  message: "PROD via ArgoCD - UPDATED FROM GIT!"
 resources:
   limits:
     cpu: 500m
