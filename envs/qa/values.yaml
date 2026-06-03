@@ -1,0 +1,4 @@
+replicaCount: 2
+ui:
+  color: "#a855f7"
+  message: "QA from git generator"
