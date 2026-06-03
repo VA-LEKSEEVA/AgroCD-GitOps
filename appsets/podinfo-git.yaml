@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: podinfo-git
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/VA-LEKSEEVA/AgroCD-GitOps.git
+      revision: main
+      directories:
+      - path: envs/*
+  template:
+    metadata:
+      name: 'podinfo-git-{{.path.basename}}'
+    spec:
+      project: default
+      sources:
+      - repoURL: https://stefanprodan.github.io/podinfo
+        chart: podinfo
+        targetRevision: 6.5.0
+        helm:
+          valueFiles:
+          - $values/{{.path.path}}/values.yaml
+      - repoURL: https://github.com/VA-LEKSEEVA/AgroCD-GitOps.git
+        targetRevision: main
+        ref: values
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'podinfo-git-{{.path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
