@@ -4,14 +4,21 @@ metadata:
   name: team-podinfo
   namespace: argocd
 spec:
-  description: Project for podinfo applications
+  description: Project for podinfo team
   sourceRepos:
-    - '*'
+    - https://github.com/VA-LEKSEEVA/AgroCD-GitOps.git
+    - https://stefanprodan.github.io/podinfo
   destinations:
-    - namespace: 'podinfo-*'
-      server: https://kubernetes.default.svc
-    - namespace: 'argocd'
+    - namespace: 'podinfo-*'        # разрешены только неймспейсы с префиксом podinfo-
       server: https://kubernetes.default.svc
   clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace               # разрешаем создавать только Namespace из cluster‑level ресурсов
+  namespaceResourceWhitelist:
     - group: '*'
-      kind: '*'
+      kind: '*'                     # любые namespaced ресурсы разрешены
+  namespaceResourceBlacklist:
+    - group: ''
+      kind: ResourceQuota           # запрещаем ResourceQuota
+    - group: ''
+      kind: LimitRange              # запрещаем LimitRange
