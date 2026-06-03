@@ -1,7 +1,7 @@
 replicaCount: 1
 ui:
   color: "#ff6b6b"
-  message: "DEV via ArgoCD"
+  message: "DEV via ArgoCD - UPDATED"
 resources:
   limits:
     cpu: 100m
