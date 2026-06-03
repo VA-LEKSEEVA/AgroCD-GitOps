@@ -5,23 +5,23 @@ metadata:
   namespace: argocd
 spec:
   generators:
-    - list:
-        elements:
-          - env: dev
-            replicas: "1"
-            color: "#ff6b6b"
-            message: "DEV from ApplicationSet"
-          - env: staging
-            replicas: "2"
-            color: "#ffd43b"
-            message: "STAGING from ApplicationSet"
-          - env: prod
-            replicas: "3"
-            color: "#51cf66"
-            message: "PROD from ApplicationSet"
+  - list:
+      elements:
+      - env: dev
+        replicas: "1"
+        color: "#ff6b6b"
+        message: "DEV from ApplicationSet"
+      - env: staging
+        replicas: "2"
+        color: "#ffd43b"
+        message: "STAGING from ApplicationSet"
+      - env: prod
+        replicas: "3"
+        color: "#51cf66"
+        message: "PROD from ApplicationSet"
   template:
     metadata:
-      name: 'podinfo-{{.env}}'
+      name: podinfo-{{.env}}
     spec:
       project: default
       source:
@@ -32,14 +32,14 @@ spec:
           values: |
             replicaCount: {{.replicas}}
             ui:
-              color: "{{.color}}"
-              message: "{{.message}}"
+              color: {{.color}}
+              message: {{.message}}
       destination:
         server: https://kubernetes.default.svc
-        namespace: 'podinfo-{{.env}}'
+        namespace: podinfo-{{.env}}
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
         syncOptions:
-          - CreateNamespace=true
+        - CreateNamespace=true
