@@ -4,6 +4,7 @@ metadata:
   name: podinfo-dev
   namespace: argocd
 spec:
+  project: team-podinfo
   project: default
   sources:
     - repoURL: https://stefanprodan.github.io/podinfo
