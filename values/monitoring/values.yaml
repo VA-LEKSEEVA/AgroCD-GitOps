@@ -6,10 +6,10 @@ prometheus:
     retentionSize: 5GB
     resources:
       requests:
-        cpu: 100m
-        memory: 512Mi
+        cpu: 50m
+        memory: 256Mi
       limits:
-        memory: 1Gi
+        memory: 512Mi
     serviceMonitorSelectorNilUsesHelmValues: false
     podMonitorSelectorNilUsesHelmValues: false
     ruleSelectorNilUsesHelmValues: false
@@ -19,14 +19,14 @@ prometheus:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 10Gi
+              storage: 5Gi   # уменьшили с 10Gi
 
 alertmanager:
   alertmanagerSpec:
     resources:
       requests:
-        cpu: 50m
-        memory: 64Mi
+        cpu: 20m
+        memory: 32Mi
   config:
     global:
       resolve_timeout: 5m
@@ -49,7 +49,7 @@ grafana:
     type: ClusterIP
   persistence:
     enabled: true
-    size: 5Gi
+    size: 2Gi   # уменьшили с 5Gi
   defaultDashboardsTimezone: browser
   dashboardProviders:
     dashboardproviders.yaml:
