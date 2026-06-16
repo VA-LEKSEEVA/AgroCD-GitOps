@@ -8,8 +8,8 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: podinfo        # метка deployment podinfo (проверьте, что у service такие же)
+      app: podinfo
   endpoints:
-    - port: 9898
+    - port: http
       path: /metrics
       interval: 15s
