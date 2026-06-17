@@ -45,3 +45,12 @@ test:
 
 gateway:
   enabled: false
+
+chunksCache:
+  enabled: false
+
+resultsCache:
+  enabled: false
+
+lokiCanary:
+  enabled: false
