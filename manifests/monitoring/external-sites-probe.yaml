@@ -4,7 +4,7 @@ metadata:
   name: external-sites
   namespace: monitoring
   labels:
-    release: kps
+    release: monitoring
 spec:
   jobName: blackbox-http
   prober:
