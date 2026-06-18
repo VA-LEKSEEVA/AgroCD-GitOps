@@ -18,6 +18,6 @@ resources:
 # final-test
 # test after config fix
 
-extraEnvs:
-  - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
-    value: "http://tempo.monitoring.svc.cluster.local:4317"
+extraArgs:
+  - --otel-service-name=podinfo-dev
+  - --otel-exporter-otlp-endpoint=tempo.monitoring.svc.cluster.local:4317
