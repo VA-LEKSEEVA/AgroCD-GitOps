@@ -17,3 +17,7 @@ resources:
 # final-trigger
 # final-test
 # test after config fix
+
+extraEnvs:
+  - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+    value: "http://tempo.monitoring.svc.cluster.local:4317"
