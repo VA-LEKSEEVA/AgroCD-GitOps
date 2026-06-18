@@ -9,15 +9,9 @@ resources:
   requests:
     cpu: 50m
     memory: 32Mi
-# test
-# trigger
-# second test
-# final test
-# fix chat_id
-# final-trigger
-# final-test
-# test after config fix
 
-extraArgs:
-  - --otel-service-name=podinfo-dev
-  - --otel-exporter-otlp-endpoint=tempo.monitoring.svc.cluster.local:4317
+extraEnvs:
+  - name: OTEL_SERVICE_NAME
+    value: "podinfo-dev"
+  - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+    value: "http://tempo.monitoring.svc.cluster.local:4317"
