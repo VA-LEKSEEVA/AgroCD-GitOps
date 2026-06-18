@@ -1,0 +1,23 @@
+replicas: 1
+
+tempo:
+  reportingEnabled: false
+  memBallastSizeMbs: 0
+  retention: 1h
+  metricsGenerator:
+    enabled: false
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      memory: 256Mi
+
+persistence:
+  enabled: false
+
+tempoQuery:
+  enabled: false
+
+serviceMonitor:
+  enabled: false
