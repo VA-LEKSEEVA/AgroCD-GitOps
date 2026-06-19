@@ -1,0 +1,30 @@
+provisionDataStore:
+  cassandra: false
+  elasticsearch: false
+  kafka: false
+
+storage:
+  type: memory
+
+allInOne:
+  enabled: true
+  image:
+    tag: "1.57"
+  extraEnv:
+    - name: COLLECTOR_OTLP_ENABLED
+      value: "true"
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      memory: 256Mi
+
+agent:
+  enabled: false
+
+collector:
+  enabled: false
+
+query:
+  enabled: false
