@@ -8,7 +8,7 @@ spec:
   sources:
     - repoURL: https://jaegertracing.github.io/helm-charts
       chart: jaeger
-      targetRevision: 3.x.x
+      targetRevision: 4.11.1
       helm:
         valueFiles:
           - $values/values/monitoring/jaeger-values.yaml
